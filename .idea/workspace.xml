@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SEP1/META-INF/SEP1.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SEP1/examPlanner/Event.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SEP1/examPlanner/Exam.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SEP1/examPlanner/Model.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SEP1/examPlanner/MyDate.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SEP1/examPlanner/Person.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SEP1/examPlanner/PersonList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SEP1/examPlanner/Room.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SEP1/examPlanner/Student.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SEP1/examPlanner/Subject.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SEP1/examPlanner/Teacher.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SEP1/gui/Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SEP1/gui/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SEP1/gui/MainController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SEP1/gui/StudentsController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SEP1/gui/ViewHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/examPlanner/Subject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/examPlanner/Subject.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,8 +88,12 @@
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectId" id="1U6x9Q8zYBLfzTHUeggp4gsmZem" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectReloadState">
     <option name="STATE" value="0" />
   </component>
@@ -82,10 +106,11 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/gui" />
-    <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -221,11 +246,23 @@
       <option name="presentableId" value="Default" />
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
+      <workItem from="1575888384782" duration="692000" />
     </task>
     <servers />
   </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1302000" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />

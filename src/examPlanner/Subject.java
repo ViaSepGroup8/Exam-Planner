@@ -1,5 +1,5 @@
 package examPlanner;
-//todo Check for duplicate adding
+//todo Check for duplicate adding (I, Bernardo made a equals method, don't know if it's what you wanted)
 
 import java.util.ArrayList;
 
@@ -33,7 +33,6 @@ public class Subject
     this.room = room;
   }
 
-
   public ArrayList<Person> getParticipants()
   {
     return participants;
@@ -42,5 +41,13 @@ public class Subject
   @Override public String toString()
   {
     return subjectName;
+  }
+
+  @Override
+  public boolean isDuplicate(Object obj) {
+    if (!(obj instanceof Subject)) { return false; }
+    Subject other = (Subject) obj;
+    if ( this.room.equals(other.room) && this.subjectName.equals(other.subjectName) && this.participants.equals(other.participants)) { return true; }
+    return false;
   }
 }
