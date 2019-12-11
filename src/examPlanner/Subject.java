@@ -43,7 +43,6 @@ public class Subject
     return subjectName;
   }
 
-  @Override
   public boolean isDuplicate(Object obj) {
     if (!(obj instanceof Subject)) { return false; }
     Subject other = (Subject) obj;
