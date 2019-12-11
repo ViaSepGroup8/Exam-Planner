@@ -58,7 +58,7 @@ public class Room implements BinarySave
 
   @Override public String toString()
   {
-    return "Room(" + name + ")";
+    return name;
   }
 
   @Override public boolean equals(Object obj)

@@ -71,7 +71,7 @@ public class RoomsController extends Controller
     //this gives us the rows that were selected
     selectedRows = tableView.getSelectionModel().getSelectedItems();
 
-    //loop over the selected rows and remove the  objects from the table
+    //loop over the selected rows and remove the  objects from the table``
     for (Room room: selectedRows)
     {
       allRooms.remove(room);

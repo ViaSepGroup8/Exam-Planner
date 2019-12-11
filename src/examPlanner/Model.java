@@ -1,27 +1,39 @@
 package examPlanner;
 
+import java.awt.image.AreaAveragingScaleFilter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Model implements BinarySave
 {
   private ArrayList<Room> rooms;
   private ArrayList<Subject> subjects;
-  private ArrayList<Event> schedule;
+  private ArrayList<Exam> exams;
   private ArrayList<Person> people;
 
-  public Model(MyDate examinationStartDate, MyDate examinationEndDate)
+  private MyDate examinationStartDate;
+  private MyDate examinationEndDate;
+
+  public Model()
   {
     rooms = new ArrayList<Room>();
     subjects = new ArrayList<Subject>();
-    schedule = new ArrayList<Event>();
+    exams = new ArrayList<Exam>();
     people = new ArrayList<Person>();
 
-    //Add all possible dates of examination to the schedule.
-    while (examinationStartDate.isBefore(examinationEndDate)){
-      schedule.add(new Event(examinationStartDate));
-      examinationStartDate.stepForwardOneDay();
-    }
+    examinationStartDate = new MyDate(10,1,2020);
+    examinationEndDate = new MyDate(20, 1, 2020);
+  }
+
+  public void setExaminationStartDate(MyDate examinationStartDate)
+  {
+    this.examinationStartDate = examinationStartDate;
+  }
+
+  public void setExaminationEndDate(MyDate examinationEndDate)
+  {
+    this.examinationEndDate = examinationEndDate;
   }
 
   public void loadSampleData(){
@@ -56,7 +68,7 @@ public class Model implements BinarySave
         "10",
         "noone");
 
-    schedule.add(newExam);
+    exams.add(newExam);
 
 
 //    //Create subjects
@@ -113,16 +125,16 @@ public class Model implements BinarySave
     System.out.print(": ");
     examRoom = rooms.get(keyboard.nextInt());
 
-    for (Event event: schedule)
-    {
-      if(event instanceof Exam){
-        //there is an exam on that date, we need to check if they don't have common participants or use the same room.
-        if(event.hasCommonParticipant(examSubject.getParticipants()) || ((Exam) event).getRoom().equals(examRoom)){
-          continue;
-        }
-        possibleDates.add(event);
-      }
-    }
+//    for (Event event: schedule)
+//    {
+//      if(event instanceof Exam){
+//        //there is an exam on that date, we need to check if they don't have common participants or use the same room.
+//        if(event.hasCommonParticipant(examSubject.getParticipants()) || ((Exam) event).getRoom().equals(examRoom)){
+//          continue;
+//        }
+//        possibleDates.add(event);
+//      }
+//    }
 
     System.out.println("Select Date: ");
     for (int i = 0; i < possibleDates.size(); i++)
@@ -151,13 +163,13 @@ public class Model implements BinarySave
 //      schedule.add(newExam);
 //    }
 
-    System.out.println("Actual Schedule:");
-    for (int i = 0; i < schedule.size(); i++)
-    {
-      if(schedule.get(i)instanceof Exam){
-        System.out.print(i + ": " + schedule.get(i) + "\n");
-      }
-    }
+//    System.out.println("Actual Schedule:");
+//    for (int i = 0; i < schedule.size(); i++)
+//    {
+//      if(schedule.get(i)instanceof Exam){
+//        System.out.print(i + ": " + schedule.get(i) + "\n");
+//      }
+//    }
   }
 
   public ArrayList<Person> getPeople()
@@ -185,6 +197,7 @@ public class Model implements BinarySave
     for(Person person : getPeople()){
       for(String subject : person.getSubjects().split(",")){
         if(!(allSubjects.contains(subject))){
+          if(!subject.equals(""))
           allSubjects.add(subject);
         }
       }
@@ -192,45 +205,61 @@ public class Model implements BinarySave
     return allSubjects;
   }
 
-  public void deleteExam()
+  public void setExams(ArrayList<Exam> exams)
   {
-    Scanner keyboard = new Scanner(System.in);
-    System.out.println("Select Exam to delete Room: ");
-    for (int i = 0; i < schedule.size(); i++)
-    {
-      if (schedule.get(i) instanceof Exam)
-        System.out.print(i + ": " + schedule.get(i) + "\n");
-    }
-    System.out.print(": ");
-    schedule.remove(keyboard.nextInt());
+    this.exams = exams;
   }
 
-  public ArrayList<Event> getSchedule()
-  {
-    return schedule;
-  }
+  //  public void deleteExam()
+//  {
+//    Scanner keyboard = new Scanner(System.in);
+//    System.out.println("Select Exam to delete Room: ");
+//    for (int i = 0; i < schedule.size(); i++)
+//    {
+//      if (schedule.get(i) instanceof Exam)
+//        System.out.print(i + ": " + schedule.get(i) + "\n");
+//    }
+//    System.out.print(": ");
+//    schedule.remove(keyboard.nextInt());
+//  }
+
 
   public ArrayList<Exam> getExams()
   {
-    ArrayList<Exam> exams = new ArrayList<Exam>();
-    Exam newExam = new Exam(
-        new MyDate(1,1,1),
-        "TODO",
-        new Room("toDoRoom",2,"rwd", "hdmi"),
-        "Michal",
-        "o",
-        "w",
-        "10",
-        "noone");
-    exams.add(newExam);
     return exams;
-//    ArrayList<Exam> exams = new ArrayList<Exam>();
-//    for (Event event: getSchedule())
-//    {
-//      if(event instanceof Exam){
-//        exams.add((Exam)event);
-//      }
-//    }
-//    return exams;
+  }
+
+  public ArrayList<MyDate> getAllFreeDates(String subject, Room room)
+  {
+    ArrayList<MyDate> freeDates = new ArrayList<MyDate>();
+
+    for(MyDate date : getAllDates()){
+      boolean collision = false;
+      for(Exam exam : getExams())
+      {
+        if(exam.getDate().equals(date)){
+          if(exam.getSubject().equals(subject) || exam.getRoom().equals(room)){
+            collision = true;
+            break;
+          }
+        }
+      }
+      if(!collision)
+        freeDates.add(date);
+    }
+
+    return freeDates;
+  }
+
+  public ArrayList<MyDate> getAllDates(){
+    ArrayList<MyDate> dates = new ArrayList<MyDate>();
+    MyDate examinationStartDateCopy = examinationStartDate.copy();
+
+    while (examinationStartDateCopy.isBefore(examinationEndDate)){
+      dates.add(examinationStartDateCopy.copy());
+      examinationStartDateCopy.stepForwardOneDay();
+    }
+
+    return dates;
   }
 }

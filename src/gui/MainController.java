@@ -3,6 +3,8 @@ package gui;
 import examPlanner.Exam;
 import examPlanner.MyDate;
 import examPlanner.Room;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,6 +14,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+
+import java.util.ArrayList;
 
 public class MainController extends Controller{
 
@@ -49,18 +53,69 @@ public class MainController extends Controller{
     formatColumn.setCellValueFactory(new PropertyValueFactory<Exam, String>("format"));
     ectsColumn.setCellValueFactory(new PropertyValueFactory<Exam, String>("ects"));
     examinersColumn.setCellValueFactory(new PropertyValueFactory<Exam, String>("examiners"));
-    //todo for other columns
-
-    ObservableList<Exam> exams = FXCollections.observableArrayList();
-    exams.addAll(getModel().getExams());
-    examTable.setItems(exams);
-
+    loadLists();
   }
 
   @Override public void reset()
   {
-
+    loadLists();
   }
+
+  public void loadLists(){
+    //Get data for Exams;
+    ObservableList<Exam> exams = FXCollections.observableArrayList();
+    exams.addAll(getModel().getExams());
+    examTable.setItems(exams);
+    examTable.getSelectionModel().selectFirst();
+
+    //Get all subjects
+    ObservableList<String> subjects = FXCollections.observableArrayList();
+    subjects.addAll(getModel().getAllSubjects());
+    subjectList.setItems(subjects);
+    subjectList.getSelectionModel().selectFirst();
+
+    //Get all rooms
+    ObservableList<Room> rooms = FXCollections.observableArrayList();
+    rooms.addAll(getModel().getRooms());
+    roomList.setItems(rooms);
+    roomList.getSelectionModel().selectFirst();
+
+
+    //add listener for change in selection
+    subjectList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener()
+    {
+      @Override public void changed(ObservableValue observableValue, Object o,
+          Object t1)
+      {
+        showFreeDates();
+      }
+    });
+    roomList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener()
+    {
+      @Override public void changed(ObservableValue observableValue, Object o,
+          Object t1)
+      {
+        showFreeDates();
+      }
+    });
+    //Get all possible dates and show them
+    showFreeDates();
+  }
+
+  public void showFreeDates(){
+    ObservableList<MyDate> dates = FXCollections.observableArrayList();
+    dates.addAll(getModel().getAllFreeDates((String)subjectList.getSelectionModel().getSelectedItem(), (Room)roomList.getSelectionModel().getSelectedItem()));
+    dateList.setItems(dates);
+    dateList.getSelectionModel().selectFirst();
+  }
+
+//      leaderListView.getSelectionModel().selectedItemProperty()
+//        .addListener(new ChangeListener<Person>() {
+//    public void changed(ObservableValue<? extends Person> observable,
+//        Person oldValue, Person newValue) {
+//      System.out.println("selection changed");
+//    }
+//  });
 
   public void manageRooms(ActionEvent actionEvent)
   {
@@ -83,26 +138,45 @@ public class MainController extends Controller{
 
   public void deleteExam(ActionEvent actionEvent)
   {
+    examTable.getItems().remove(examTable.getSelectionModel().getSelectedItem());
+
+    ArrayList<Exam> exams = new ArrayList<Exam>();
+    exams.addAll(examTable.getItems());
+    getModel().setExams(exams);
+
+    loadLists();
   }
 
   public void createExam(ActionEvent actionEvent)
   {
-    Exam newExam;
-    newExam = new Exam(
-        new MyDate(1,1,1),
-        "TODO",
-        new Room("toDoRoom",2,"rwd", "hdmi"),
-        "Michal",
+
+    Exam newExam = new Exam(
+        (MyDate) dateList.getSelectionModel().getSelectedItem(),
+        (String) subjectList.getSelectionModel().getSelectedItem(),
+        (Room) roomList.getSelectionModel().getSelectedItem(),
+        teacherTextField.getText(),
         typeTextField.getText(),
         formatTextField.getText(),
         ectsTextField.getText(),
         examinersTextField.getText());
 
     examTable.getItems().add(newExam);
+
+    ArrayList<Exam> exams = new ArrayList<Exam>();
+    exams.addAll(examTable.getItems());
+    getModel().setExams(exams);
+
+    loadLists();
   }
 
   public void saveChanges(ActionEvent actionEvent)
   {
+    //todo save everything to lists !!!
+    ArrayList<Exam> exams = new ArrayList<Exam>();
+    exams.addAll(examTable.getItems());
+    getModel().setExams(exams);
+    getModel().save("data.bin");
+    getViewHandler().openView("mainView");
   }
 
   public void upload(ActionEvent actionEvent)

@@ -58,8 +58,7 @@ public class Person implements BinarySave
 
   public void setSubjects(String subjects)
   {
-    this.subjects = subjects;
-    this.subjects.replace(" ", "");
+    this.subjects = subjects.replace(" ", "");
   }
 
   @Override public boolean equals(Object obj)

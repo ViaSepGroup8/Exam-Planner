@@ -35,13 +35,13 @@
       <TableView fx:id="examTable" prefHeight="200.0" prefWidth="200.0">
          <columns>
             <TableColumn fx:id="subjectColumn" prefWidth="75.0" text="Subject" />
-            <TableColumn fx:id="RoomColumn" prefWidth="75.0" text="Room" />
-            <TableColumn fx:id="DateColumn" prefWidth="75.0" text="Date" />
-            <TableColumn fx:id="TeacherColumn" prefWidth="97.0" text="Teacher" />
-            <TableColumn fx:id="typeColumn" prefWidth="159.0" text="Ordinary/Reexam" />
-            <TableColumn fx:id="formatColumn" minWidth="0.0" prefWidth="131.0" text="Written/Oral" />
-            <TableColumn fx:id="ectsColumn" minWidth="0.0" prefWidth="74.0" text="ECTS" />
-            <TableColumn fx:id="examinersColumn" prefWidth="183.0" text="External Examiners" />
+            <TableColumn fx:id="RoomColumn" prefWidth="70.0" text="Room" />
+            <TableColumn fx:id="DateColumn" prefWidth="93.0" text="Date" />
+            <TableColumn fx:id="TeacherColumn" prefWidth="123.0" text="Teacher" />
+            <TableColumn fx:id="typeColumn" prefWidth="141.0" text="Ordinary/Reexam" />
+            <TableColumn fx:id="formatColumn" minWidth="0.0" prefWidth="121.0" text="Written/Oral" />
+            <TableColumn fx:id="ectsColumn" minWidth="0.0" prefWidth="71.0" text="ECTS" />
+            <TableColumn fx:id="examinersColumn" prefWidth="175.0" text="External Examiners" />
          </columns>
       </TableView>
       <Label prefHeight="44.0" prefWidth="169.0" text="Create New Exam">
