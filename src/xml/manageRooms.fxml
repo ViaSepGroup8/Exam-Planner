@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="TOP_CENTER" prefHeight="513.0" prefWidth="627.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.RoomsController">
+   <children>
+      <TableView fx:id="tableView" prefHeight="454.0" prefWidth="485.0">
+         <columns>
+            <TableColumn fx:id="roomNameColumn" onEditCommit="#editName" prefWidth="114.0" text="Room Name" />
+            <TableColumn fx:id="capacityColumn" onEditCommit="#editCapacity" prefWidth="131.0" text="Capacity" />
+            <TableColumn fx:id="subjectsColumn" onEditCommit="#editSubjects" prefWidth="233.0" text="Subjects tought in this room" />
+            <TableColumn fx:id="functionalitiesColumn" onEditCommit="#editFunctionalities" prefWidth="148.0" text="Functionalities" />
+         </columns>
+      </TableView>
+      <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="388.0">
+         <children>
+            <TextField fx:id="nameTextField" prefHeight="26.0" prefWidth="76.0" promptText="Name" />
+            <TextField fx:id="capacityTextField" prefHeight="26.0" prefWidth="74.0" promptText="Capacity" />
+            <TextField fx:id="subjectsTextField" prefHeight="26.0" prefWidth="208.0" promptText="Subjects separated by comma" />
+            <TextField fx:id="functionalitiesTextField" prefHeight="26.0" prefWidth="266.0" promptText="Functionalities separated by comma" />
+         </children>
+      </HBox>
+      <HBox prefHeight="0.0" prefWidth="627.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#addRoom" prefHeight="26.0" prefWidth="236.0" text="Add Person">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#removeRoom" prefHeight="26.0" prefWidth="110.0" text="Remove" />
+            <Button mnemonicParsing="false" onAction="#saveChanges" prefHeight="26.0" prefWidth="289.0" text="SAVE CHANGES" />
+         </children>
+      </HBox>
+   </children>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</VBox>
