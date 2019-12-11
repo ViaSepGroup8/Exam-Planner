@@ -1,6 +1,6 @@
 package examPlanner;
 
-public class Exam extends Event{
+public class Exam extends Event implements BinarySave{
   private Subject subject;
   private Room room;
   private boolean isReexam;

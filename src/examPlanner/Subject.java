@@ -1,9 +1,9 @@
 package examPlanner;
-//todo Check for duplicate adding (I, Bernardo made a equals method, don't know if it's what you wanted)
+//todo Check for duplicate adding
 
 import java.util.ArrayList;
 
-public class Subject
+public class Subject implements BinarySave
 {
   private String subjectName;
   private Room room;
@@ -33,6 +33,7 @@ public class Subject
     this.room = room;
   }
 
+
   public ArrayList<Person> getParticipants()
   {
     return participants;
@@ -41,12 +42,5 @@ public class Subject
   @Override public String toString()
   {
     return subjectName;
-  }
-
-  public boolean isDuplicate(Object obj) {
-    if (!(obj instanceof Subject)) { return false; }
-    Subject other = (Subject) obj;
-    if ( this.room.equals(other.room) && this.subjectName.equals(other.subjectName) && this.participants.equals(other.participants)) { return true; }
-    return false;
   }
 }

@@ -16,6 +16,8 @@ public class ViewHandler
 
   private MainController mainController = null;
   private StudentsController studentsController = null;
+  private RoomsController roomsController = null;
+  private changePeriodController changePeriodController = null;
 
   public ViewHandler(Model model, Stage primaryStage)
   {
@@ -32,7 +34,6 @@ public class ViewHandler
 
   public void openView(String id)
   {
-    System.out.println("NOW: ");
     Region root = null;
     String title = "";
 
@@ -44,8 +45,18 @@ public class ViewHandler
         title = "Manage Students";break;
 
       case "mainView":
-        mainController = (MainController) loadView("/xml/MainWindow.fxml", mainController);
+        mainController = (MainController) loadView("/xml/mainWindow.fxml", mainController);
         root = mainController.getRoot();
+        title = "Exam planner";break;
+
+      case "manageRooms":
+        roomsController = (RoomsController) loadView("/xml/manageRooms.fxml", roomsController);
+        root = roomsController.getRoot();
+        title = "Exam planner";break;
+
+      case "changePeriod":
+        changePeriodController = (changePeriodController) loadView("/xml/changePeriod.fxml", changePeriodController);
+        root = changePeriodController.getRoot();
         title = "Exam planner";break;
     }
 

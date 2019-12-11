@@ -3,21 +3,19 @@ package examPlanner;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Model
+public class Model implements BinarySave
 {
   private ArrayList<Room> rooms;
   private ArrayList<Subject> subjects;
   private ArrayList<Event> schedule;
-  private ArrayList<Student> students;
-  private ArrayList<Teacher> teachers;
+  private ArrayList<Person> people;
 
   public Model(MyDate examinationStartDate, MyDate examinationEndDate)
   {
     rooms = new ArrayList<Room>();
     subjects = new ArrayList<Subject>();
     schedule = new ArrayList<Event>();
-    students = new ArrayList<Student>();
-    teachers = new ArrayList<Teacher>();
+    people = new ArrayList<Person>();
 
     //Add all possible dates of examination to the schedule.
     while (examinationStartDate.isBefore(examinationEndDate)){
@@ -28,52 +26,50 @@ public class Model
 
   public void loadSampleData(){
     //Add the students
-    students.add(new Student(294000, "Juan", "Trebolle", "z1"));
-    students.add(new Student(294322, "Jan", "Lishak", "z1"));
-    students.add(new Student(294000, "z1"));
+    people.add(new Student(294000, "Juan", "Trebolle", "rwd"));
+    people.add(new Student(294322, "Jan", "Lishak", "rwd"));
 
-    students.add(new Student(3232, "Ju23an", "Trebo42lle", "x1"));
-    students.add(new Student(222, "Ja24n", "L42ishak", "x1"));
-    students.add(new Student(123, "x1"));
+    people.add(new Student(3232, "Ju23an", "Trebo42lle", "rwd"));
+    people.add(new Student(222, "Ja24n", "L42ishak", "rwd"));
 
 
     //Create the rooms as well
-    rooms.add(new Room("X301", 40));
-    rooms.add(new Room("X302", 20));
-    rooms.add(new Room("X303", 70));
+    rooms.add(new Room("X301", 40, "rwd", "hdmi"));
+    rooms.add(new Room("X302", 20, "sse", "vga"));
+    rooms.add(new Room("X303", 70, "", "hdmi, vga"));
 
     //Add Teachers
-    Teacher astrid = new Teacher(111222);
-    Teacher michael = new Teacher(444555);
+    Person astrid = new Teacher(11, "Astrid", "xxx", "rwd");
+    Person michael = new Teacher(22, "Michal", "xxx", "rwd");
 
-    teachers.add(astrid);
-    teachers.add(michael);
+    people.add(astrid);
+    people.add(michael);
 
 
-    //Create subjects
-    Subject SDJ1 = new Subject("SDJ1");
-    SDJ1.addParticipant(students.get(0));
-    SDJ1.addParticipant(students.get(1));
-    SDJ1.addParticipant(students.get(2));
-    SDJ1.addParticipant(teachers.get(1)); //select from list
-    SDJ1.setRoom(rooms.get(0));//select from list
-    subjects.add(SDJ1);
-
-    Subject SSE1 = new Subject("SSE1");
-    SDJ1.addParticipant(students.get(0));
-    SDJ1.addParticipant(students.get(1));
-    SDJ1.addParticipant(students.get(2));
-    SDJ1.addParticipant(teachers.get(0)); //select from list
-    SDJ1.setRoom(rooms.get(1));//select from list
-    subjects.add(SSE1);
-
-    Subject SDJ2 = new Subject("SDJ2");
-    SDJ1.addParticipant(students.get(3));
-    SDJ1.addParticipant(students.get(4));
-    SDJ1.addParticipant(students.get(5));
-    SDJ1.addParticipant(teachers.get(1)); //select from list
-    SDJ2.setRoom(rooms.get(2));//select from list
-    subjects.add(SDJ2);
+//    //Create subjects
+//    Subject SDJ1 = new Subject("SDJ1");
+//    SDJ1.addParticipant(students.get(0));
+//    SDJ1.addParticipant(students.get(1));
+//    SDJ1.addParticipant(students.get(2));
+//    SDJ1.addParticipant(teachers.get(1)); //select from list
+//    SDJ1.setRoom(rooms.get(0));//select from list
+//    subjects.add(SDJ1);
+//
+//    Subject SSE1 = new Subject("SSE1");
+//    SDJ1.addParticipant(students.get(0));
+//    SDJ1.addParticipant(students.get(1));
+//    SDJ1.addParticipant(students.get(2));
+//    SDJ1.addParticipant(teachers.get(0)); //select from list
+//    SDJ1.setRoom(rooms.get(1));//select from list
+//    subjects.add(SSE1);
+//
+//    Subject SDJ2 = new Subject("SDJ2");
+//    SDJ1.addParticipant(students.get(3));
+//    SDJ1.addParticipant(students.get(4));
+//    SDJ1.addParticipant(students.get(5));
+//    SDJ1.addParticipant(teachers.get(1)); //select from list
+//    SDJ2.setRoom(rooms.get(2));//select from list
+//    subjects.add(SDJ2);
   }
 
   public void createExam()
@@ -149,6 +145,38 @@ public class Model
         System.out.print(i + ": " + schedule.get(i) + "\n");
       }
     }
+  }
+
+  public ArrayList<Person> getPeople()
+  {
+    return people;
+  }
+
+  public void setPeople(ArrayList<Person> people)
+  {
+    this.people = people;
+  }
+
+  public ArrayList<Room> getRooms()
+  {
+    return rooms;
+  }
+
+  public void setRooms(ArrayList<Room> rooms)
+  {
+    this.rooms = rooms;
+  }
+
+  public ArrayList<String> getAllSubjects(){
+    ArrayList<String> allSubjects = new ArrayList<String>();
+    for(Person person : getPeople()){
+      for(String subject : person.getSubjects().split(",")){
+        if(!(allSubjects.contains(subject))){
+          allSubjects.add(subject);
+        }
+      }
+    }
+    return allSubjects;
   }
 
   public void deleteExam()

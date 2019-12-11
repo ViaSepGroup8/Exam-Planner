@@ -2,7 +2,7 @@ package examPlanner;
 
 import java.util.ArrayList;
 
-public class Event
+public class Event implements BinarySave
 {
   private MyDate date;
   private ArrayList<Person> participants;

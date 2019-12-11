@@ -3,7 +3,7 @@ package examPlanner;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class MyDate
+public class MyDate implements BinarySave
 {
   private int month, day, year;
 

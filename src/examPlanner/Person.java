@@ -1,16 +1,19 @@
 package examPlanner;
 
-public class Person
+public class Person implements BinarySave
 {
   private Integer id;
   private String firstName;
   private String lastName;
+  private String subjects;
+  private boolean isTeacher;
 
-  public Person(Integer id, String firstName, String lastName)
+  public Person(Integer id, String firstName, String lastName, String subjects)
   {
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
+    this.subjects = subjects;
   }
 
   public Person(Integer id)
@@ -33,6 +36,11 @@ public class Person
     return lastName;
   }
 
+  public String getSubjects()
+  {
+    return subjects;
+  }
+
   public void setId(Integer id)
   {
     this.id = id;
@@ -48,6 +56,12 @@ public class Person
     this.lastName = lastName;
   }
 
+  public void setSubjects(String subjects)
+  {
+    this.subjects = subjects;
+    this.subjects.replace(" ", "");
+  }
+
   @Override public boolean equals(Object obj)
   {
     if(obj instanceof Person){
@@ -55,5 +69,10 @@ public class Person
       return this.id == other.id;
     }
     return false;
+  }
+
+  @Override public String toString()
+  {
+    return "Person[" + id + " " + firstName + " " + lastName  + " " + subjects + "]";
   }
 }

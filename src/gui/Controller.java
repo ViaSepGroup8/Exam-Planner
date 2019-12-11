@@ -1,10 +1,9 @@
 package gui;
 
 import examPlanner.Model;
-import javafx.fxml.Initializable;
 import javafx.scene.layout.Region;
 
-public abstract class Controller implements Initializable
+public abstract class Controller
 {
   private Region root;
   private Model model;
@@ -15,8 +14,10 @@ public abstract class Controller implements Initializable
     this.model = model;
     this.viewHandler = viewHandler;
     this.root = root;
+    initData();
   }
 
+  abstract public void initData();
   abstract public void reset();
 
   public Region getRoot(){
