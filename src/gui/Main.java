@@ -24,6 +24,7 @@ public class Main extends Application {
             model.save("data.bin");
         }
 
+        model.loadSampleData();
         ViewHandler viewHandler = new ViewHandler(model, primaryStage);
         viewHandler.openView("mainView");
     }

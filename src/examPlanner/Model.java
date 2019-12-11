@@ -45,6 +45,19 @@ public class Model implements BinarySave
     people.add(astrid);
     people.add(michael);
 
+    Exam newExam;
+    newExam = new Exam(
+        new MyDate(1,1,1),
+        "TODO",
+        new Room("toDoRoom",2,"rwd", "hdmi"),
+        "Michal",
+        "o",
+        "w",
+        "10",
+        "noone");
+
+    schedule.add(newExam);
+
 
 //    //Create subjects
 //    Subject SDJ1 = new Subject("SDJ1");
@@ -119,8 +132,8 @@ public class Model implements BinarySave
     Event event = possibleDates.get(keyboard.nextInt());
     examDate = event.getDate();
 
-    Exam newExam = new Exam(examDate, examSubject, examRoom, false, true, "12:00");
-    event = newExam;
+    //Exam newExam = new Exam(examDate, examSubject, examRoom, false, true, "12:00");
+    //event = newExam;
     //System.out.println(newExam);
 
 //    boolean elementIsLast = true;
@@ -190,5 +203,34 @@ public class Model implements BinarySave
     }
     System.out.print(": ");
     schedule.remove(keyboard.nextInt());
+  }
+
+  public ArrayList<Event> getSchedule()
+  {
+    return schedule;
+  }
+
+  public ArrayList<Exam> getExams()
+  {
+    ArrayList<Exam> exams = new ArrayList<Exam>();
+    Exam newExam = new Exam(
+        new MyDate(1,1,1),
+        "TODO",
+        new Room("toDoRoom",2,"rwd", "hdmi"),
+        "Michal",
+        "o",
+        "w",
+        "10",
+        "noone");
+    exams.add(newExam);
+    return exams;
+//    ArrayList<Exam> exams = new ArrayList<Exam>();
+//    for (Event event: getSchedule())
+//    {
+//      if(event instanceof Exam){
+//        exams.add((Exam)event);
+//      }
+//    }
+//    return exams;
   }
 }
