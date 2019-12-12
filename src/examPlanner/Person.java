@@ -1,5 +1,7 @@
 package examPlanner;
 
+import java.util.ArrayList;
+
 public class Person implements BinarySave
 {
   private Integer id;
@@ -13,7 +15,7 @@ public class Person implements BinarySave
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
-    this.subjects = subjects;
+    setSubjects(subjects);
   }
 
   public Person(Integer id)
@@ -59,6 +61,17 @@ public class Person implements BinarySave
   public void setSubjects(String subjects)
   {
     this.subjects = subjects.replace(" ", "");
+  }
+
+  public ArrayList<String> getSubjectsList()
+  {
+    ArrayList<String> subjectList = new ArrayList<String>();
+    for (String subject : getSubjects().split(","))
+    {
+      if (!subject.equals(""))
+        subjectList.add(subject);
+    }
+    return subjectList;
   }
 
   @Override public boolean equals(Object obj)

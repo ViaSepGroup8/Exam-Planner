@@ -6,11 +6,12 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:controller="gui.changePeriodController" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="255.0" prefWidth="424.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="255.0" prefWidth="424.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.changePeriodController">
    <children>
       <Label prefHeight="21.0" prefWidth="477.0" text="Select Examination Period">
          <font>
@@ -27,8 +28,8 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <DatePicker GridPane.columnIndex="1" />
-            <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <DatePicker fx:id="examStartDate" GridPane.columnIndex="1" />
+            <DatePicker fx:id="examEndDate" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="Examination Strat Date:" />
             <Label text="Examination End Date:" GridPane.rowIndex="1" />
          </children>
@@ -36,11 +37,12 @@
             <Insets top="20.0" />
          </padding>
       </GridPane>
-      <Button onAction="#saveChanges" mnemonicParsing="false" prefHeight="29.0" prefWidth="324.0" text="Change Examination Period">
-         <VBox.margin>
-            <Insets top="3.0" />
-         </VBox.margin>
-      </Button>
+      <HBox prefHeight="33.0" prefWidth="324.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#cancel" prefHeight="33.0" prefWidth="103.0" text="Cancel" />
+            <Button mnemonicParsing="false" onAction="#saveChanges" prefHeight="55.0" prefWidth="269.0" text="Change Examination Period" />
+         </children>
+      </HBox>
    </children>
    <opaqueInsets>
       <Insets />

@@ -235,10 +235,10 @@ public class Model implements BinarySave
 
     for(MyDate date : getAllDates()){
       boolean collision = false;
-      for(Exam exam : getExams())
-      {
+      for(Exam exam : getExams()){
         if(exam.getDate().equals(date)){
-          if(exam.getSubject().equals(subject) || exam.getRoom().equals(room)){
+          if(exam.getRoom().equals(room) || subjectCollision(exam.getSubject(), subject))
+          {
             collision = true;
             break;
           }
@@ -251,11 +251,20 @@ public class Model implements BinarySave
     return freeDates;
   }
 
+  private boolean subjectCollision(String subject1, String subject2)
+  {
+    for(Person person : getPeople()){
+      if(person.getSubjectsList().contains(subject1) && person.getSubjectsList().contains(subject2))
+        return true;
+    }
+    return false;
+  }
+
   public ArrayList<MyDate> getAllDates(){
     ArrayList<MyDate> dates = new ArrayList<MyDate>();
     MyDate examinationStartDateCopy = examinationStartDate.copy();
 
-    while (examinationStartDateCopy.isBefore(examinationEndDate)){
+    while (examinationStartDateCopy.isBefore(examinationEndDate) || examinationStartDateCopy.equals(examinationEndDate)){
       dates.add(examinationStartDateCopy.copy());
       examinationStartDateCopy.stepForwardOneDay();
     }
