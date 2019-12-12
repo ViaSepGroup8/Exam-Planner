@@ -185,5 +185,6 @@ public class MainController extends Controller{
 
   public void exit(ActionEvent actionEvent)
   {
+    System.exit(0);
   }
 }

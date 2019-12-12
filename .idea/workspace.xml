@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="add and removing of exams now work!">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="99% is finished :)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SEP1/examPlanner/Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SEP1/examPlanner/Model.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SEP1/examPlanner/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SEP1/examPlanner/Person.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SEP1/gui/changePeriodController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SEP1/gui/changePeriodController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SEP1/xml/changePeriod.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SEP1/xml/changePeriod.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/examPlanner/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/examPlanner/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/examPlanner/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/examPlanner/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/changePeriodController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/changePeriodController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/xml/changePeriod.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/xml/changePeriod.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/MainController.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -281,7 +274,21 @@
       <option name="project" value="LOCAL" />
       <updated>1576106694621</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="99% is finished :)">
+      <created>1576111480939</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1576111480939</updated>
+    </task>
+    <task id="LOCAL-00007" summary="99% is finished :)">
+      <created>1576111515195</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1576111515195</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -306,7 +313,8 @@
     <MESSAGE value="Now I finally worked out how to use git in intelliJ so ill commit more often" />
     <MESSAGE value="getting the mainWindows to work" />
     <MESSAGE value="add and removing of exams now work!" />
-    <option name="LAST_COMMIT_MESSAGE" value="add and removing of exams now work!" />
+    <MESSAGE value="99% is finished :)" />
+    <option name="LAST_COMMIT_MESSAGE" value="99% is finished :)" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/SEP1$Main.ic" NAME="Main Coverage Results" MODIFIED="1575740283998" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
