@@ -29,7 +29,8 @@ public class Exam extends Event implements BinarySave{
 
   @Override public String toString()
   {
-    return String.format("|r: %s, s: %s, t: %s, tp: %s, f: %s, ects: %s, exm: %s|", room.toString(), subject, teacher, type, format, ects, examiners);
+    return String.format("%s, %s, %s, %s, %s, %s ,%s ,%s", subject, room.toString(),
+        getDate().toString(), teacher, type, format, ects, examiners);
   }
 
   public void setRoom(Room room)

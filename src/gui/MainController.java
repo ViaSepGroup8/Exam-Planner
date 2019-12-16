@@ -179,8 +179,9 @@ public class MainController extends Controller{
     getViewHandler().openView("mainView");
   }
 
-  public void upload(ActionEvent actionEvent)
-  {
+  public void upload(ActionEvent actionEvent){
+    getModel().saveToCSV();
+    getModel().uploadToFTP();
   }
 
   public void exit(ActionEvent actionEvent)

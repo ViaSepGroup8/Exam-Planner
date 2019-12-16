@@ -1,11 +1,13 @@
 package examPlanner;
+import org.apache.commons.net.ftp.FTPClient;
 
-import java.awt.image.AreaAveragingScaleFilter;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Scanner;
 
-public class Model implements BinarySave
+
+public class Model implements BinarySave, CSVsave
 {
   private ArrayList<Room> rooms;
   private ArrayList<Subject> subjects;
@@ -271,4 +273,61 @@ public class Model implements BinarySave
 
     return dates;
   }
+
+  @Override public void saveToCSV()
+  {
+    String StringCSV[] = new String[exams.size()];
+    for (int i = 0; i < StringCSV.length; i++)
+    {
+      StringCSV[i] = exams.get(i).toString();
+    }
+
+    try
+    {
+      CSVsave.CSVSave("table.csv", StringCSV);
+    }
+    catch (Exception e)
+    {
+      System.out.println("Cannot write to file table.csv");
+      return;
+    }
+  }
+
+  public void uploadToFTP(){
+    FTPClient client = new FTPClient();
+    FileInputStream fis = null;
+
+    try
+    {
+      client.connect("files.000webhost.com");
+      client.login("via-jd-sep", "ssesucks");
+      // Create an InputStream of the file to be uploaded
+
+      String filename = "table.csv";
+      fis = new FileInputStream(filename);
+      client.storeFile("public_html/"+filename, fis);
+      client.logout();
+    }catch (Exception e)
+    {
+      System.out.println("Something went wrong!");
+      e.printStackTrace();
+    }
+    finally
+    {
+      try
+      {
+        if (fis != null) {
+          fis.close();
+        }
+        client.disconnect();
+      }
+      catch (IOException e)
+      {
+        e.printStackTrace();
+      }
+    }
+  }
+
+
+
 }
