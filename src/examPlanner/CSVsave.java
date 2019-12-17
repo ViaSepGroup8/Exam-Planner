@@ -8,7 +8,7 @@ import org.apache.commons.net.ftp.FTPClient;
 
 public interface CSVsave
 {
-  static void CSVRead(String pathname) throws Exception {
+  /*static void CSVRead(String pathname) throws Exception {
     File file = new File(pathname);
     Scanner in = new Scanner(file);
     while (in.hasNext()) {
@@ -16,10 +16,10 @@ public interface CSVsave
       String[] token = line.split(","); // Split the line into an array
           /*String txt = token[0].trim();
           int x = Integer.parseInt(token[1].trim());
-          System.out.println(txt + " - " + x ); //print out all 3 entries*/
+          System.out.println(txt + " - " + x ); //print out all 3 entries
     }
     in.close();
-  }
+  }*/
 
   static void CSVSave(String pathname, String[] text) throws Exception {
     File file = new File(pathname);

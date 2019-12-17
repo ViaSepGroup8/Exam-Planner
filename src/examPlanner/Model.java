@@ -276,8 +276,9 @@ public class Model implements BinarySave, CSVsave
 
   @Override public void saveToCSV()
   {
-    String StringCSV[] = new String[exams.size()];
-    for (int i = 0; i < StringCSV.length; i++)
+    String StringCSV[] = new String[exams.size() + 1];
+    StringCSV[0] = "Subject,Room,Date,Teacher,Ordinary/Reexam,Oral/Writen,ECTS,External examinor";
+    for (int i = 1; i <= StringCSV.length; i++)
     {
       StringCSV[i] = exams.get(i).toString();
     }
@@ -305,7 +306,7 @@ public class Model implements BinarySave, CSVsave
 
       String filename = "table.csv";
       fis = new FileInputStream(filename);
-      client.storeFile("public_html/"+filename, fis);
+      client.storeFile("public_html/" + filename, fis);
       client.logout();
     }catch (Exception e)
     {
