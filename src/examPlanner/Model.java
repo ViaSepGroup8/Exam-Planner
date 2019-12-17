@@ -278,9 +278,9 @@ public class Model implements BinarySave, CSVsave
   {
     String StringCSV[] = new String[exams.size() + 1];
     StringCSV[0] = "Subject,Room,Date,Teacher,Ordinary/Reexam,Oral/Writen,ECTS,External examinor";
-    for (int i = 1; i <= StringCSV.length; i++)
+    for (int i = 0; i < exams.size(); i++)
     {
-      StringCSV[i] = exams.get(i).toString();
+      StringCSV[i+1] = exams.get(i).toString();
     }
 
     try
