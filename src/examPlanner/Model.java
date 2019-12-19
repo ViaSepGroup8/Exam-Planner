@@ -1,6 +1,6 @@
 package examPlanner;
 import org.apache.commons.net.ftp.FTPClient;
-
+import org.apache.commons.codec.binary.Hex;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -210,7 +210,7 @@ public class Model implements BinarySave, CSVsave
     try
     {
       client.connect("files.000webhost.com");
-      client.login("via-jd-sep", "ssesucks");
+      client.login("via-jd-sep", new String(Hex.decodeHex("7373657375636b73".toCharArray()), "UTF-8"));
       // Create an InputStream of the file to be uploaded
 
       String filename = "table.csv";
