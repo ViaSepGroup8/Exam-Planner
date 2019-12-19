@@ -39,6 +39,9 @@ public class Model implements BinarySave, CSVsave
   }
 
   public void loadSampleData(){
+    //this method is intended to fill some date to the program.
+    //mainly used in debugging should be omitted in production version.
+
     //Add the students
     people.add(new Student(294000, "Juan", "Trebolle", "rwd"));
     people.add(new Student(294322, "Jan", "Lishak", "rwd"));
@@ -62,7 +65,7 @@ public class Model implements BinarySave, CSVsave
     Exam newExam;
     newExam = new Exam(
         new MyDate(1,1,1),
-        "TODO",
+        "SSE",
         new Room("toDoRoom",2,"rwd", "hdmi"),
         "Michal",
         "o",
@@ -71,107 +74,6 @@ public class Model implements BinarySave, CSVsave
         "noone");
 
     exams.add(newExam);
-
-
-//    //Create subjects
-//    Subject SDJ1 = new Subject("SDJ1");
-//    SDJ1.addParticipant(students.get(0));
-//    SDJ1.addParticipant(students.get(1));
-//    SDJ1.addParticipant(students.get(2));
-//    SDJ1.addParticipant(teachers.get(1)); //select from list
-//    SDJ1.setRoom(rooms.get(0));//select from list
-//    subjects.add(SDJ1);
-//
-//    Subject SSE1 = new Subject("SSE1");
-//    SDJ1.addParticipant(students.get(0));
-//    SDJ1.addParticipant(students.get(1));
-//    SDJ1.addParticipant(students.get(2));
-//    SDJ1.addParticipant(teachers.get(0)); //select from list
-//    SDJ1.setRoom(rooms.get(1));//select from list
-//    subjects.add(SSE1);
-//
-//    Subject SDJ2 = new Subject("SDJ2");
-//    SDJ1.addParticipant(students.get(3));
-//    SDJ1.addParticipant(students.get(4));
-//    SDJ1.addParticipant(students.get(5));
-//    SDJ1.addParticipant(teachers.get(1)); //select from list
-//    SDJ2.setRoom(rooms.get(2));//select from list
-//    subjects.add(SDJ2);
-  }
-
-  public void createExam()
-  {
-    //Rules priority
-    //Student cannot be at two exams at the same time
-
-    Scanner keyboard = new Scanner(System.in);
-
-    Room examRoom;
-    Subject examSubject;
-    MyDate examDate;
-    ArrayList<Room> possibleRooms = (ArrayList<Room>) rooms.clone();
-    ArrayList<Event> possibleDates = new ArrayList<Event>();
-
-    System.out.println("Select Subject: ");
-    for (int i = 0; i < subjects.size(); i++)
-    {
-      System.out.print(i + ": " + subjects.get(i) + " ");
-    }
-    examSubject = subjects.get(keyboard.nextInt());
-
-    System.out.println("Select Room: ");
-    for (int i = 0; i < possibleRooms.size(); i++)
-    {
-      System.out.print(i + ": " + possibleRooms.get(i) + " ");
-    }
-    System.out.print(": ");
-    examRoom = rooms.get(keyboard.nextInt());
-
-//    for (Event event: schedule)
-//    {
-//      if(event instanceof Exam){
-//        //there is an exam on that date, we need to check if they don't have common participants or use the same room.
-//        if(event.hasCommonParticipant(examSubject.getParticipants()) || ((Exam) event).getRoom().equals(examRoom)){
-//          continue;
-//        }
-//        possibleDates.add(event);
-//      }
-//    }
-
-    System.out.println("Select Date: ");
-    for (int i = 0; i < possibleDates.size(); i++)
-    {
-      System.out.print(i + ": " + possibleDates.get(i) + "\n");
-    }
-    Event event = possibleDates.get(keyboard.nextInt());
-    examDate = event.getDate();
-
-    //Exam newExam = new Exam(examDate, examSubject, examRoom, false, true, "12:00");
-    //event = newExam;
-    //System.out.println(newExam);
-
-//    boolean elementIsLast = true;
-//    for (int i = 0; i < schedule.size(); i++)
-//    {
-//      if(examStartDate.isBefore(schedule.get(i).getStartDateTime())){
-//        //System.out.println("Found!");
-//        schedule.add(i, newExam);
-//        elementIsLast = false;
-//        break;
-//      }
-//    }
-//
-//    if(elementIsLast){
-//      schedule.add(newExam);
-//    }
-
-//    System.out.println("Actual Schedule:");
-//    for (int i = 0; i < schedule.size(); i++)
-//    {
-//      if(schedule.get(i)instanceof Exam){
-//        System.out.print(i + ": " + schedule.get(i) + "\n");
-//      }
-//    }
   }
 
   public ArrayList<Person> getPeople()
@@ -194,6 +96,12 @@ public class Model implements BinarySave, CSVsave
     this.rooms = rooms;
   }
 
+  //This method returns all subjects in an array of Strings. Each student has a string with subjects separated by commas.
+  //Firstly we create an empty list called "allSubjects". The algorithm goes through all the students and looks at their subjects Strings.
+  //Than splits every Subjects String by comma, so that we have Multiple Strings each representing one subject of the student.
+  //We add each of the newly created single subject String to the list "allSubjects, if it is not already in there.
+  //Lastly we end up with a list of all subjects.
+
   public ArrayList<String> getAllSubjects(){
     ArrayList<String> allSubjects = new ArrayList<String>();
     for(Person person : getPeople()){
@@ -212,25 +120,21 @@ public class Model implements BinarySave, CSVsave
     this.exams = exams;
   }
 
-  //  public void deleteExam()
-//  {
-//    Scanner keyboard = new Scanner(System.in);
-//    System.out.println("Select Exam to delete Room: ");
-//    for (int i = 0; i < schedule.size(); i++)
-//    {
-//      if (schedule.get(i) instanceof Exam)
-//        System.out.print(i + ": " + schedule.get(i) + "\n");
-//    }
-//    System.out.print(": ");
-//    schedule.remove(keyboard.nextInt());
-//  }
-
-
   public ArrayList<Exam> getExams()
   {
     return exams;
   }
 
+  //Firstly we create an empty list called "freeDates" where we will later add all the freeDates.
+  //To find a free date for an exam we firstly need to know which subject and what room we want to have the exam in.
+  //A Free Date is such date that: 1. does not use the same room at that specific date
+  //                               2. There is no exam with same people at that specific date.
+  //For each Date in the examination period the algorithm checks if at that date there is some exam.
+  //If there are no exams at that date. The date is "free" and we can add it to our list of free dates.
+  //If there is some exam on that date we need to check if it collides with our exam. To check it we it needs to meet our two requirements.
+  //The exam cannot use the same room as we want or any of the people that are taking that exam cannot be taking our exam. For the second requirement we can use function subjectCollision().
+  //If both requirement are met the exam does not collide with the one we want to create so we can add the date to the list of free dates.
+  //When we check all the dates, we end up with a list of all the dates that are possible for the exam we want to create.
   public ArrayList<MyDate> getAllFreeDates(String subject, Room room)
   {
     ArrayList<MyDate> freeDates = new ArrayList<MyDate>();
@@ -253,6 +157,10 @@ public class Model implements BinarySave, CSVsave
     return freeDates;
   }
 
+  //If there exists at least one persons that has both of the subjects the subjects collide.
+  //At first we need two subjects that we want to check. We will call them subject1 and subject2.
+  //Than we can go through every single student and check if he/she has both of them.
+  //If we find at least one such students that has both subject1 and subject2 than does two subjects collide.
   private boolean subjectCollision(String subject1, String subject2)
   {
     for(Person person : getPeople()){
@@ -262,6 +170,7 @@ public class Model implements BinarySave, CSVsave
     return false;
   }
 
+  //This method return a list of all dates that are within the examination period.
   public ArrayList<MyDate> getAllDates(){
     ArrayList<MyDate> dates = new ArrayList<MyDate>();
     MyDate examinationStartDateCopy = examinationStartDate.copy();
@@ -328,7 +237,4 @@ public class Model implements BinarySave, CSVsave
       }
     }
   }
-
-
-
 }

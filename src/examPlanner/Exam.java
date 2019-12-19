@@ -1,6 +1,11 @@
 package examPlanner;
 
-public class Exam extends Event implements BinarySave{
+import java.util.ArrayList;
+
+public class Exam implements BinarySave{
+  private MyDate date;
+  private ArrayList<Person> participants;
+
   private Room room;
   private String subject;
   private String teacher;
@@ -12,7 +17,7 @@ public class Exam extends Event implements BinarySave{
   public Exam(MyDate date, String subject, Room room, String teacher,
       String type, String format, String ects, String examiners)
   {
-    super(date);
+    this.date = date;
     this.subject = subject;
     this.room = room;
     this.teacher = teacher;
@@ -31,6 +36,11 @@ public class Exam extends Event implements BinarySave{
   {
     return String.format("%s, %s, %s, %s, %s, %s ,%s ,%s", subject, room.toString(),
         getDate().toString(), teacher, type, format, ects, examiners);
+  }
+
+  public MyDate getDate()
+  {
+    return date;
   }
 
   public void setRoom(Room room)

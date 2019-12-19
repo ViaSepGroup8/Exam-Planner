@@ -1,5 +1,6 @@
 Subject,Room,Date,Teacher,Ordinary/Reexam,Oral/Writen,ECTS,External examinor
-rwd, X301, 11/01/2020, Astrid, O, W ,10 ,Nasa
-sdj, X301, 10/01/2020, Michal, O, R ,20 ,no specified
-sse, X302, 14/01/2020, Michal, O, R ,20 ,no specified
-sse, X303, 18/01/2020, Richard, O, O ,10 ,
+TODO, toDoRoom, 01/01/0001, Michal, o, w ,10 ,noone
+rwd, X301, 10/01/2020, , ,  , ,
+rwd, X302, 13/01/2020, , ,  , ,
+rwd, X302, 14/01/2020, , ,  , ,
+rwd, X301, 11/01/2020, asd, asd, asd ,20 ,asd

@@ -7,7 +7,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SEP1/examPlanner/CSVsave.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SEP1/examPlanner/CSVsave.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SEP1/examPlanner/Event.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SEP1/examPlanner/Exam.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SEP1/examPlanner/Exam.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SEP1/examPlanner/Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SEP1/examPlanner/Model.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/examPlanner/CSVsave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/examPlanner/CSVsave.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/examPlanner/Event.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/examPlanner/Exam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/examPlanner/Exam.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/examPlanner/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/examPlanner/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/table.csv" beforeDir="false" afterPath="$PROJECT_DIR$/table.csv" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -106,7 +117,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dynamic.classpath" value="false" />
     <property name="findjar.last.used.dir" value="$PROJECT_DIR$/lib" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../opt/javafx-sdk-12.0.2/lib" />
+    <property name="last_opened_file_path" value="C:/Program Files/Java/javafx-sdk-12.0.2/lib" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -163,7 +174,7 @@
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="gui.Main" />
       <module name="SEP1" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\Bernardo\IdeaProjects\opt\javafx-sdk-12.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\javafx-sdk-12.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="gui.*" />
